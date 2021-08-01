@@ -29,7 +29,7 @@ profanity.isMessageDirty = function (message) {
     if(!message || typeof message !== "string") {
         throw new Error("message passed to the function must be a string");
     }
-    var messageWords = message.split(" ");
+    var messageWords = message.split(/[^A-Za-z]/);
     badWordsDictionary = _.merge(hindiBadWords, englishBadWords, userDefinedWords);
     badWordsDictionary = _.transform(badWordsDictionary, function (result, val, key) {
         result[key.toLowerCase()] = val;
